@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+set -e
+
+PACKAGE="$@"
+
+export DEBIAN_FRONTEND="noninteractive"
+apt-get -q update
+apt-get install -y --no-install-recommends --auto-remove "$PACKAGE"
+apt-get -q clean
+rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
